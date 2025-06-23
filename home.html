@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1>Грузовозофф - Ваш надежный партнер в перевозке грузов</h1>
+        <p class="lead">Быстрая и безопасная доставка грузов по всей России</p>
+        {% if not current_user.is_authenticated %}
+        <div class="mt-4">
+            <a href="{{ url_for('auth.register') }}" class="btn btn-light me-2">Регистрация</a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light">Вход</a>
+        </div>
+        {% else %}
+        <div class="mt-4">
+            <a href="{{ url_for('request.new_request') }}" class="btn btn-light">Сделать заказ</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="container my-5">
+    <h2 class="text-center mb-4">Наши преимущества</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="card-title">Быстрая доставка</h3>
+                    <p class="card-text">Оперативная транспортировка грузов в любую точку России. Своевременно и без задержек.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">Надежность</h3>
+                    <p class="card-text">Гарантируем сохранность вашего груза. Используем современные системы крепления и мониторинга.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="card-title">Выгодные цены</h3>
+                    <p class="card-text">Предлагаем конкурентоспособные тарифы на все виды грузоперевозок. Без скрытых платежей.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Как это работает</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                        <h3 class="mb-0">1</h3>
+                    </div>
+                    <h4>Регистрация</h4>
+                    <p>Создайте аккаунт на нашем сайте за несколько минут</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                        <h3 class="mb-0">2</h3>
+                    </div>
+                    <h4>Заказ</h4>
+                    <p>Заполните заявку с указанием деталей перевозки</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                        <h3 class="mb-0">3</h3>
+                    </div>
+                    <h4>Обработка</h4>
+                    <p>Мы проверяем вашу заявку и связываемся с вами</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                        <h3 class="mb-0">4</h3>
+                    </div>
+                    <h4>Доставка</h4>
+                    <p>Наши водители доставляют ваш груз по указанному адресу</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="container my-5 text-center">
+    <h2>Готовы оформить заявку?</h2>
+    <p class="lead">Начните пользоваться нашими услугами уже сегодня</p>
+    {% if not current_user.is_authenticated %}
+    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Зарегистрироваться</a>
+    {% else %}
+    <a href="{{ url_for('request.new_request') }}" class="btn btn-primary btn-lg">Создать заявку</a>
+    {% endif %}
+</section>
+{% endblock content %} 

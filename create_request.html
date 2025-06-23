@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card shadow request-form">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">{{ legend }}</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                {{ form.transport_date.label(class="form-label") }}
+                                {% if form.transport_date.errors %}
+                                    {{ form.transport_date(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.transport_date.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.transport_date(class="form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.transport_time.label(class="form-label") }}
+                                {% if form.transport_time.errors %}
+                                    {{ form.transport_time(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.transport_time.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.transport_time(class="form-control") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                {{ form.weight.label(class="form-label") }}
+                                {% if form.weight.errors %}
+                                    {{ form.weight(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.weight.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.weight(class="form-control", placeholder="Укажите вес в кг") }}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.dimensions.label(class="form-label") }}
+                                {% if form.dimensions.errors %}
+                                    {{ form.dimensions(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.dimensions.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.dimensions(class="form-control", placeholder="Например: 100x50x75") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.cargo_type.label(class="form-label") }}
+                            {% if form.cargo_type.errors %}
+                                {{ form.cargo_type(class="form-select is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.cargo_type.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.cargo_type(class="form-select") }}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.pickup_address.label(class="form-label") }}
+                            {% if form.pickup_address.errors %}
+                                {{ form.pickup_address(class="form-control is-invalid", rows=3) }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.pickup_address.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.pickup_address(class="form-control", rows=3, placeholder="Полный адрес с индексом") }}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.delivery_address.label(class="form-label") }}
+                            {% if form.delivery_address.errors %}
+                                {{ form.delivery_address(class="form-control is-invalid", rows=3) }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.delivery_address.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.delivery_address(class="form-control", rows=3, placeholder="Полный адрес с индексом") }}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} 
